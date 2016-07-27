@@ -5,10 +5,6 @@ giphyApp.init = function(){
 
 	giphyApp.colorChange();
 
-	console.log("does this work?");
-	
-	// giphyApp.getData();
-
 	$('form').on('submit', function(){
 		event.preventDefault();
 		
@@ -32,34 +28,22 @@ giphyApp.getData = function(userInput){
 		tag: 'userInput'
 	})
 	.then(function(info){
-
-		// var src = info;
-		console.log(info);
 		giphyApp.displayGif(info);
 	});
 };
 
-// Display gif on the page
 giphyApp.displayGif = function(info){
-
-	// var src = "https://api.unsplash.com/photos/random?client_id=336b527b2e18d045045820b78062b95c825376311326b2a08f9b93eef7efc07b";
-	//     $.getJSON(src, function(result){
-	//         $('body').css('background-image', 'url('+ result.urls.full +')');
-
-	//     });
-
-
-
+	// Display gif on the page
 	var gifUrl = $('main').css('background-image', 'url('+ info.data.image_original_url +')');
+	
 	$('main').append(gifUrl);	
 };
 
 giphyApp.colorChange = function(){
-	// create endless color variations to cycle through
+	// Create endless color variations to cycle through
 	var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
 
 	$('.title').animate( { backgroundColor: hue }, 1000);
-
 };
 
 $(function(){
